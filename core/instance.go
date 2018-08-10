@@ -419,7 +419,6 @@ func (i *instance) createRunInstancesInput(instanceType string, price float64) *
 	if i.asg.LaunchTemplate != nil {
 		retval.LaunchTemplate = &ec2.LaunchTemplateSpecification{
 			LaunchTemplateId:   i.asg.LaunchTemplate.LaunchTemplateId,
-			LaunchTemplateName: i.asg.LaunchTemplate.LaunchTemplateName,
 		}
 	}
 
@@ -462,10 +461,7 @@ func (i *instance) generateTagsList() []*ec2.TagSpecification {
 	tags := ec2.TagSpecification{
 		ResourceType: aws.String("instance"),
 		Tags: []*ec2.Tag{
-			{
-				Key:   aws.String("LaunchConfigurationName"),
-				Value: i.asg.LaunchConfigurationName,
-			},
+			
 			{
 				Key:   aws.String("launched-by-autospotting"),
 				Value: aws.String("true"),
