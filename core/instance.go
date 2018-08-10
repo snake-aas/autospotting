@@ -461,10 +461,7 @@ func (i *instance) generateTagsList() []*ec2.TagSpecification {
 	tags := ec2.TagSpecification{
 		ResourceType: aws.String("instance"),
 		Tags: []*ec2.Tag{
-			{
-				Key:   aws.String("LaunchConfigurationName"),
-				Value: i.asg.LaunchConfigurationName,
-			},
+			
 			{
 				Key:   aws.String("launched-by-autospotting"),
 				Value: aws.String("true"),
